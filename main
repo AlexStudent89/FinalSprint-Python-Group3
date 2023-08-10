@@ -1,0 +1,64 @@
+# Final Sprint semester 1 - Keyin
+
+# imports
+import datetime
+
+# constants
+
+# functions
+def newEmployee():
+
+def carRentals():
+
+def employeePayment():
+
+def companyProfitListing():
+
+def customReport():
+
+
+# main program
+
+while True:
+    print()
+    print("           HAB Taxi Services")
+    print("           Company Services System")
+    print("1. Enter a New Employee (driver)")
+    print("2. Enter Company Revenues")
+    print("3. Enter Company Expenses")
+    print("4. Track Car Rentals")
+    print("5. Record Employee Payment")
+    print("6. Print Company Profit Listing")
+    print("7. Print Driver Financial Listing")
+    print("8. Custom report")
+    print("9. Quit Program")
+    print()
+
+    try: userInput = int(input("Enter a number of 1 through 9: "))
+    except: print("Please enter a valid number.")
+    else:
+        if 9 < userInput < 1:
+            print("Please enter a valid number.")
+        else:
+            if userInput == 1:
+                newEmployee()
+            elif userInput == 2:
+                print("Option not configured.")
+            elif userInput == 3:
+                print("Option not configured.")
+            elif userInput == 4:
+                carRentals()
+            elif userInput == 5:
+                employeePayment()
+            elif userInput == 6:
+                companyProfitListing()
+            elif userInput == 7:
+                print("Option not configured.")
+            elif userInput == 8:
+                customReport()
+            else:
+                print()
+                print("System entering sleep mode. Thanks for using the company system.")
+                break
+
+

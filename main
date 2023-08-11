@@ -155,12 +155,16 @@ def newEmployee():
         f = open("Drivers.dat", "a")
 
 def carRentals():
+    pass
 
 def employeePayment():
+    pass
 
 def companyProfitListing():
+    pass
 
 def customReport():
+    pass
 
 
 # main program

@@ -18,12 +18,13 @@ HST_RATE= float(f.readline())
 f.close()
 
 # functions
+
 def newEmployee():
     while True:
 
         while True:
 
-            empDriverNum = driverNum
+            empDriverNum = NEXT_DRIVER_NUM
 
             print()
             print("Add new Employee:")
@@ -45,6 +46,16 @@ def newEmployee():
                 print("Enter a valid name please.")
             elif empLastName == " ":
                 print("Enter a valid name please.")
+            else:
+                break
+
+        while True:
+            empCityNotAllowed = set("1234567890")
+            empCity = input("Enter employee city: ")
+            if empCity == " ":
+                print("Enter a valid address.")
+            elif empCity in empCityNotAllowed:
+                print("Enter a valid city please. ")
             else:
                 break
 
@@ -94,7 +105,10 @@ def newEmployee():
             except:
                 print("Enter a valid number please. ")
             else:
-                break
+                if licenseNum == "":
+                    print("Enter a license. ")
+                else:
+                    break
 
         while True:
             licenseTimelineAllowed = set("/1234567890")
@@ -118,19 +132,27 @@ def newEmployee():
             else:
                 insuranceCompany = input("Enter the insurance company: ")
                 if insuranceCompany == " ":
-                    print("You must enter a company. " )
+                    print("You must enter a company. ")
                 else:
                     break
 
         while True:
             empOwnCar = input("Does this employee have their own car? (Y/N)").upper()
-            if empOwnCar != "Y" and "N":
+            if empOwnCar != "Y" and empOwnCar != "N":
                 print("Invalid response, enter Y or N please. ")
-            else:
-                break
+            elif empOwnCar == "Y":
+                balDueSubtotal = MONTHLY_STAND_FEE
+            elif empOwnCar == "N":
+                typeOfCharges = input("Daily or weekly rental? Enter Daily or Weekly: ").upper()
+                if typeOfCharges == "DAILY":
+                    balDueSubtotal = DAILY_RENTAL_FEE
+                elif typeOfCharges == "WEEKLY":
+                    balDueSubtotal = WEEKLY_RENTAL_FEE
+                    break
 
-        
+        balDueTotal = balDueSubtotal * (1 + HST_RATE)
 
+        f = open("Drivers.dat", "a")
 
 def carRentals():
 

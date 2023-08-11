@@ -1,9 +1,21 @@
-# Final Sprint semester 1 - Keyin
+# Program Name: Final Sprint - HAB Taxi Services
+# Program Description: A program designed to service HAB Taxi Services, with calculations and reports
+# Written By: Group 3
+# Written On: August 4th - August 18, 2023
 
 # imports
+import csv
 import datetime
 
-# constants
+# Constants
+f = open('defaults.dat', 'r')
+NEXT_TRANSACTION_NUM = int(f.readline())
+NEXT_DRIVER_NUM = int(f.readline())
+MONTHLY_STAND_FEE = float(f.readline())
+DAILY_RENTAL_FEE = float(f.readline())
+WEEKLY_RENTAL_FEE = float(f.readline())
+HST_RATE= float(f.readline())
+f.close()
 
 # functions
 def newEmployee():

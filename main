@@ -19,6 +19,118 @@ f.close()
 
 # functions
 def newEmployee():
+    while True:
+
+        while True:
+
+            empDriverNum = driverNum
+
+            print()
+            print("Add new Employee:")
+            print()
+
+            empNameAllowed = set("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm'")
+
+            empFirstName = input("Enter employee first name: ").title()
+            if empFirstName not in empNameAllowed:
+                print("Enter a valid name please.")
+            elif empFirstName == " ":
+                print("Enter a valid name please.")
+            else:
+                break
+
+        while True:
+            empLastName = input("Enter employee last name: ").title()
+            if empLastName not in empNameAllowed:
+                print("Enter a valid name please.")
+            elif empLastName == " ":
+                print("Enter a valid name please.")
+            else:
+                break
+
+        while True:
+            empAddress = input("Enter employee address: ")
+            if empAddress == " ":
+                print("Enter a valid address.")
+            else:
+                break
+
+        while True:
+            empPostalCharAllowed = set("ASDFGHJKLQWERTYUIOPZXCVBNM")
+            empPostalNumAllowed = set("1234567890")
+            empPostal = input("Enter employee postal code: ").upper()
+            if empPostal == " ":
+                print("Enter a valid Postal Code.")
+            elif len(empPostal) != 5:
+                print("Enter a valid Postal Code without spaces.")
+            elif empPostal[0] or empPostal[2] or empPostal[4] not in empPostalCharAllowed:
+                print("Enter a valid Postal Code.")
+            elif empPostal[1] or empPostal[3] or empPostal[5] not in empPostalNumAllowed:
+                print("Enter a valid Postal Code.")
+            else:
+                break
+
+        while True:
+            provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
+            empProv = input("Enter employee province: ")
+            if empProv not in provAllowed:
+                print("Enter a valid province plesase.")
+            else:
+                break
+
+        while True:
+            phoneNumAllowed = set("1234567890-")
+            empPhone = input("Enter employee phone number: ")
+            if empPhone not in phoneNumAllowed:
+                print("Enter a valid number please. ")
+            elif len(empPhone) != 11:
+                print("Enter a full 10 digit phone number with dashes please. ")
+            else:
+                break
+
+        while True:
+            try:
+                licenseNum = int(input("Enter driver license number: "))
+            except:
+                print("Enter a valid number please. ")
+            else:
+                break
+
+        while True:
+            licenseTimelineAllowed = set("/1234567890")
+            licenseTimeline = input("Enter the driver license expiry with a '/' ")
+            if licenseTimeline not in licenseTimelineAllowed:
+                print("Enter a valid set of numbers with a '/' please. ")
+            elif licenseTimeline == " ":
+                print("Enter a license number please.")
+            elif len(licenseTimeline) != 4:
+                print("Use 2 digits for both month and year please. ")
+            elif licenseTimeline[2] != "/":
+                print("Use a '/' in the correct spot to define month and year please. ")
+            else:
+                break
+
+        while True:
+            insuranceNumAllowed = set("1234567890")
+            insuranceNum = input("Enter the employee's insurance number: ")
+            if insuranceNum not in insuranceNumAllowed:
+                print("Enter a valid insurance number please. ")
+            else:
+                insuranceCompany = input("Enter the insurance company: ")
+                if insuranceCompany == " ":
+                    print("You must enter a company. " )
+                else:
+                    break
+
+        while True:
+            empOwnCar = input("Does this employee have their own car? (Y/N)").upper()
+            if empOwnCar != "Y" and "N":
+                print("Invalid response, enter Y or N please. ")
+            else:
+                break
+
+        
+
 
 def carRentals():
 

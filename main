@@ -9,42 +9,43 @@ import datetime
 
 # Constants
 f = open('defaults.dat', 'r')
+
 NEXT_TRANSACTION_NUM = int(f.readline())
 NEXT_DRIVER_NUM = int(f.readline())
 MONTHLY_STAND_FEE = float(f.readline())
 DAILY_RENTAL_FEE = float(f.readline())
 WEEKLY_RENTAL_FEE = float(f.readline())
-HST_RATE= float(f.readline())
+HST_RATE = float(f.readline())
+
 f.close()
 
-# functions
 
+# functions
 def newEmployee():
     while True:
 
+        empDriverNum = NEXT_DRIVER_NUM
+
+        print()
+        print("Add new Employee:")
+        print()
+
         while True:
-
-            empDriverNum = NEXT_DRIVER_NUM
-
-            print()
-            print("Add new Employee:")
-            print()
-
             empNameAllowed = set("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm'")
 
             empFirstName = input("Enter employee first name: ").title()
-            if empFirstName not in empNameAllowed:
+            if not set(empFirstName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empFirstName == " ":
+            elif empFirstName == "":
                 print("Enter a valid name please.")
             else:
                 break
 
         while True:
             empLastName = input("Enter employee last name: ").title()
-            if empLastName not in empNameAllowed:
+            if not set(empLastName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empLastName == " ":
+            elif empLastName == "":
                 print("Enter a valid name please.")
             else:
                 break
@@ -52,16 +53,16 @@ def newEmployee():
         while True:
             empCityNotAllowed = set("1234567890")
             empCity = input("Enter employee city: ")
-            if empCity == " ":
+            if empCity == "":
                 print("Enter a valid address.")
-            elif empCity in empCityNotAllowed:
+            elif set(empCity).issubset(empCityNotAllowed):
                 print("Enter a valid city please. ")
             else:
                 break
 
         while True:
             empAddress = input("Enter employee address: ")
-            if empAddress == " ":
+            if empAddress == "":
                 print("Enter a valid address.")
             else:
                 break
@@ -70,31 +71,33 @@ def newEmployee():
             empPostalCharAllowed = set("ASDFGHJKLQWERTYUIOPZXCVBNM")
             empPostalNumAllowed = set("1234567890")
             empPostal = input("Enter employee postal code: ").upper()
-            if empPostal == " ":
+            if empPostal == "":
                 print("Enter a valid Postal Code.")
-            elif len(empPostal) != 5:
+            elif len(empPostal) != 6:
                 print("Enter a valid Postal Code without spaces.")
-            elif empPostal[0] or empPostal[2] or empPostal[4] not in empPostalCharAllowed:
-                print("Enter a valid Postal Code.")
-            elif empPostal[1] or empPostal[3] or empPostal[5] not in empPostalNumAllowed:
-                print("Enter a valid Postal Code.")
+            elif not set(empPostal[0]).issubset(empPostalCharAllowed) or not set(empPostal[2]).issubset(empPostalCharAllowed) or not set(empPostal[4]).issubset(empPostalCharAllowed):
+                print("1Enter a valid Postal Code.")
+            elif not set(empPostal[1]).issubset(empPostalNumAllowed) or not set(empPostal[3]).issubset(empPostalNumAllowed) or not set(empPostal[5]).issubset(empPostalNumAllowed):
+                print("2Enter a valid Postal Code.")
             else:
                 break
 
         while True:
             provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
-            empProv = input("Enter employee province: ")
+            empProv = input("Enter employee province: ").upper()
             if empProv not in provAllowed:
-                print("Enter a valid province plesase.")
+                print("Enter a valid province please.")
+            elif empProv == "":
+                print("Enter province. ")
             else:
                 break
 
         while True:
             phoneNumAllowed = set("1234567890-")
             empPhone = input("Enter employee phone number: ")
-            if empPhone not in phoneNumAllowed:
+            if not set(empPhone).issubset(phoneNumAllowed):
                 print("Enter a valid number please. ")
-            elif len(empPhone) != 11:
+            elif len(empPhone) != 12:
                 print("Enter a full 10 digit phone number with dashes please. ")
             else:
                 break
@@ -113,11 +116,11 @@ def newEmployee():
         while True:
             licenseTimelineAllowed = set("/1234567890")
             licenseTimeline = input("Enter the driver license expiry with a '/' ")
-            if licenseTimeline not in licenseTimelineAllowed:
+            if not set(licenseTimeline).issubset(licenseTimelineAllowed):
                 print("Enter a valid set of numbers with a '/' please. ")
-            elif licenseTimeline == " ":
+            elif licenseTimeline == "":
                 print("Enter a license number please.")
-            elif len(licenseTimeline) != 4:
+            elif len(licenseTimeline) != 5:
                 print("Use 2 digits for both month and year please. ")
             elif licenseTimeline[2] != "/":
                 print("Use a '/' in the correct spot to define month and year please. ")
@@ -127,14 +130,19 @@ def newEmployee():
         while True:
             insuranceNumAllowed = set("1234567890")
             insuranceNum = input("Enter the employee's insurance number: ")
-            if insuranceNum not in insuranceNumAllowed:
+            if not set(insuranceNum).issubset(insuranceNumAllowed):
                 print("Enter a valid insurance number please. ")
+            elif insuranceNum == "":
+                print("Enter insurance number. ")
             else:
-                insuranceCompany = input("Enter the insurance company: ")
-                if insuranceCompany == " ":
-                    print("You must enter a company. ")
-                else:
-                    break
+                break
+
+        while True:
+            insuranceCompany = input("Enter the insurance company: ")
+            if insuranceCompany == "":
+                print("You must enter a company. ")
+            else:
+                break
 
         while True:
             empOwnCar = input("Does this employee have their own car? (Y/N)").upper()
@@ -142,10 +150,12 @@ def newEmployee():
                 print("Invalid response, enter Y or N please. ")
             elif empOwnCar == "Y":
                 balDueSubtotal = MONTHLY_STAND_FEE
+                break
             elif empOwnCar == "N":
                 typeOfCharges = input("Daily or weekly rental? Enter Daily or Weekly: ").upper()
                 if typeOfCharges == "DAILY":
                     balDueSubtotal = DAILY_RENTAL_FEE
+                    break
                 elif typeOfCharges == "WEEKLY":
                     balDueSubtotal = WEEKLY_RENTAL_FEE
                     break
@@ -154,17 +164,36 @@ def newEmployee():
 
         f = open("Drivers.dat", "a")
 
-def carRentals():
-    pass
+        driverFirstName = f.write(f"{empFirstName}, ")
+        driverLastName = f.write(f"{empLastName}, ")
+        driverAddress = f.write(f"{empAddress}, ")
+        driverCity = f.write(f"{empCity}, ")
+        driverProv = f.write(f"{empProv}, ")
+        driverPostal = f.write(f"{empPostal}, ")
+        driverPhone = f.write(f"{empPhone}, ".format(str(empPhone)))
+        driverLicense = f.write(f"{licenseNum}, ".format(str(licenseNum)))
+        driverLicenseTimeline = f.write(f"{licenseTimeline}, ")
+        driverInsurance = f.write(f"{insuranceNum}, ")
+        driverInsuranceCompany = f.write(f"{insuranceCompany}, ")
+        driverCarYN = f.write(f"{empOwnCar}, ")
+        driverBalDueSubtotal = f.write(f"{balDueSubtotal}, ".format(str(balDueSubtotal)))
+        driverBalDueTotal = f.write(f"{balDueTotal}, \n".format(str(balDueTotal)))
 
-def employeePayment():
-    pass
+        f.close()
 
-def companyProfitListing():
-    pass
 
-def customReport():
-    pass
+
+
+    # update driver num in defaults
+    # print receipt
+    # continue prompt
+# def carRentals():
+
+
+# def companyProfitListing():
+
+
+# def customReport():
 
 
 # main program
@@ -184,8 +213,10 @@ while True:
     print("9. Quit Program")
     print()
 
-    try: userInput = int(input("Enter a number of 1 through 9: "))
-    except: print("Please enter a valid number.")
+    try:
+        userInput = int(input("Enter a number of 1 through 9: "))
+    except:
+        print("Please enter a valid number.")
     else:
         if 9 < userInput < 1:
             print("Please enter a valid number.")
@@ -210,5 +241,3 @@ while True:
                 print()
                 print("System entering sleep mode. Thanks for using the company system.")
                 break
-
-

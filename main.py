@@ -262,7 +262,7 @@ def customReport():
             company_name = "HAB Taxi Service"
             print("{:^103s}".format(company_name))
             print("-" * 103)
-            print(f"Report for Driver: {driver_number}: ")
+            print(f"Report for Driver: {driver_number} ")
             print(f"Employee Name: {driver_info['EmpName']}")
             print(f"Address: {driver_info['EmpStreetAdd']}, {driver_info['EmpCity']}, {driver_info['EmpProv']}")
             print()

@@ -18,4 +18,4 @@ DriverID,LicenseNum,CarID,EmpName,EmpStreetAdd,EmpCity,EmpProv,EmpPhone,EmpEmail
 1918,GH9012,1938,Amanda Martinez,890 Walnut St,St. John's,NL,709-555-9012,amanda@example.com,0,No
 1919,IJ3456,1939,Justin Lewis,123 Elm St,St. John's,NL,709-555-3456,justin@example.com,0,Yes
 1920,KL7890,1940,Emily Wright,456 Oak St,St. John's,NL,709-555-7890,emily@example.com,0,No
-1921,MN2345,1941,Andrew Scott,789 Pine St,St. John's,NL,709-555-2345,andrew@example.com,150,Yes
+1921,MN2345,1941,Andrew Scott,789 Pine St,St. John's,NL,709-555-2345,andrew@example.com,150,YesDill, Reg, 5678 main, john's, NL, A1A1A1, 999-999-9999, 23456, 12/12, 1234567, leb, Y, 175.0, 201.24999999999997, 

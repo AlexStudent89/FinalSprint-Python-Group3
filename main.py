@@ -36,7 +36,7 @@ def newEmployee():
             empFirstName = input("Enter employee first name: ").title()
             if not set(empFirstName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empFirstName == "":
+            elif empFirstName == " ":
                 print("Enter a valid name please.")
             else:
                 break
@@ -44,7 +44,7 @@ def newEmployee():
             empLastName = input("Enter employee last name: ").title()
             if not set(empLastName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empLastName == "":
+            elif empLastName == " ":
                 print("Enter a valid name please.")
             else:
                 break
@@ -52,7 +52,7 @@ def newEmployee():
 
         while True:
             empAddress = input("Enter employee address: ")
-            if empAddress == "":
+            if empAddress == " ":
                 print("Enter a valid address.")
             else:
                 break
@@ -60,7 +60,7 @@ def newEmployee():
         while True:
             empCityNotAllowed = set("1234567890")
             empCity = input("Enter employee city: ")
-            if empCity == "":
+            if empCity == " ":
                 print("Enter a valid address.")
             elif set(empCity).issubset(empCityNotAllowed):
                 print("Enter a valid city please. ")
@@ -70,8 +70,8 @@ def newEmployee():
         while True:
             empPostalCharAllowed = set("ASDFGHJKLQWERTYUIOPZXCVBNM")
             empPostalNumAllowed = set("1234567890")
-            empPostal = input("Enter employee postal code(X1X1X1): ").upper()
-            if empPostal == "":
+            empPostal = input("Enter employee postal code (X1X1X1): ").upper()
+            if empPostal == " ":
                 print("Enter a valid Postal Code.")
             elif len(empPostal) != 6:
                 print("Enter a valid Postal Code without spaces.")
@@ -83,11 +83,11 @@ def newEmployee():
                 break
 
         while True:
-            provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
-            empProv = input("Enter employee province(XX): ").upper()
+            provAllowed = ["NL", "ON", "QC", "SK", "MB", "NS", "NB", "PE", "AB", "BC", "NT", "NU", "YK"]
+            empProv = input("Enter employee province (XX): ").upper()
             if empProv not in provAllowed:
                 print("Enter a valid province please.")
-            elif empProv == "":
+            elif empProv == " ":
                 print("Enter province. ")
             else:
                 break
@@ -108,7 +108,7 @@ def newEmployee():
             except:
                 print("Enter a valid number please. ")
             else:
-                if licenseNum == "":
+                if licenseNum == " ":
                     print("Enter a license. ")
                 else:
                     break
@@ -207,8 +207,9 @@ def customReport():
       within the specified date range. If the driver number is '0', the function returns to the main menu.
     """
     driver_data = {}
+    print()
     with open('drivers.dat', 'r') as f:
-        next(f)  # Skip the header line
+        next(f) 
         for line in f:
             data = line.strip().split(',')
             driver_id = int(data[0])
@@ -227,7 +228,7 @@ def customReport():
 
     revenue_data = []
     with open('revenue.dat', 'r') as f:
-        next(f)  # Skip the header line
+        next(f)  
         for line in f:
             data = line.strip().split(',')
             transaction_id = int(data[0])
@@ -263,10 +264,11 @@ def customReport():
         
         target_start_date = input("Enter the start date of the range (YYYY-MM-DD): ")
         target_end_date = input("Enter the end date of the range (YYYY-MM-DD): ")
-
+        print()
         if driver_number in driver_data:
             driver_info = driver_data[driver_number]
             print(f"Report for Driver {driver_number}: {driver_info['EmpName']}")
+            print()
             print("Date\t\tTransaction ID\tPayment Description\tSubtotal\tHST\tTotal")
 
             total_payments = 0
@@ -274,7 +276,9 @@ def customReport():
             for entry in revenue_data:
                 if entry['driver_id'] == driver_number and target_start_date <= entry['date'] <= target_end_date:
                     revenue_info = entry['revenue_info']
-                    print(f"{entry['date']}\t{entry['transaction_id']}\t\t{revenue_info['payment_description']}\t\t{revenue_info['subtotal']:.2f}\t\t{revenue_info['hst']:.2f}\t{revenue_info['total']:.2f}")
+                    print(" "*10, "Transaction ", "Payment")
+                    print("Date", " "*9, "ID", " "*5, "Suntotal"*10, "HST", " "*5, "Total" )
+                    print(f"{entry}\t{entry}\t\t{revenue_info}\t{revenue_info:.2f}\t\t{revenue_info:.2f}\t{revenue_info:.2f}")
                     total_payments += revenue_info['total']
 
             print("\nSummary:")
@@ -294,7 +298,8 @@ def customReport():
 while True:
     print()
     print("           HAB Taxi Services")
-    print("           Company Services System")
+    print("        Company Services System")
+    print()
     print("1. Enter a New Employee (driver)")
     print("2. Enter Company Revenues")
     print("3. Enter Company Expenses")

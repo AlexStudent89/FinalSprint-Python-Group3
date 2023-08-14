@@ -1,0 +1,23 @@
+InvNum  DriverID    CarID   InvDate     ItemName    ItemNum Description Quantity    Unit Cost   Subtotal    HST     Total
+1001    1903        1       2023-07-15  Brakes      3       Repair      2           75.00       150.00      22.50   172.50
+1002    1906        5       2023-07-16  Oil Change  1       Maintenance 5           45.50       227.50      34.12   261.62
+1003    1910        10      2023-07-17  Cleaning    2       Supplies    20          12.80       256.00      38.40   294.40
+1004    1910        3       2023-07-18  Brakes      5       Repair      1           95.00       95.00       14.25   109.25
+1005    1920        12      2023-07-19  Oil Change  4       Maintenance 3           50.75       152.25      22.84   175.09
+1006    1903        2       2023-07-20  Cleaning    3       Supplies    7           20.00       140.00      21.00   161.00
+1007    1915        6       2023-07-21  Brakes      1       Repair      4           60.00       240.00      36.00   276.00
+1008    1911        11      2023-07-22  Oil Change  2       Maintenance 2           35.00       70.00       10.50   80.50
+1009    1927        4       2023-07-23  Brakes      5       Repair      3           80.00       240.00      36.00   276.00
+1010    1932        13      2023-07-24  Cleaning    4       Supplies    10          18.50       185.00      27.75   212.75
+1011    1914        3       2023-07-25  Brakes      3       Repair      1           75.00       75.00       11.25   86.25
+1012    1905        7       2023-07-26  Oil Change  1       Maintenance 6           40.00       240.00      36.00   276.00
+1013    1906        14      2023-07-27  Cleaning    2       Supplies    15          15.75       236.25      35.44   271.69
+1014    1910        5       2023-07-28  Brakes      5       Repair      2           90.00       180.00      27.00   207.00
+1015    1914        15      2023-07-29  Oil Change  4       Maintenance 4           55.00       220.00      33.00   253.00
+1016    1932        4       2023-07-30  Cleaning    3       Supplies    8           22.50       180.00      27.00   207.00
+1017    1935        8       2023-07-31  Brakes      1       Repair      3           70.00       210.00      31.50   241.50
+1018    1937        16      2023-08-01  Oil Change  2       Maintenance 1           40.00       40.00       6.00    46.00
+1019    1903        6       2023-08-02  Brakes      5       Repair      5           85.00       425.00      63.75   488.75
+1020    1923        17      2023-08-03  Cleaning    4       Supplies    12          17.25       207.00      31.05   238.05
+1015    1903        6       2023-08-02  Brakes      5       Repair      5           85.00       425.00      63.75   488.75
+1021    1923        17      2023-08-03  Cleaning    4       Supplies    12          17.25       207.00      31.05   238.05

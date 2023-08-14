@@ -193,19 +193,11 @@ def newEmployee():
 # def companyProfitListing():
 
 
-def customReport():
-    """
-    Generates a custom financial report for a specific driver within a given date range.
-
-    Parameters:
-    - driver_number_input (str): The driver number to generate the report for. Enter '0' to return to the main menu.
-    - target_start_date (str): The start date of the date range (YYYY-MM-DD).
-    - target_end_date (str): The end date of the date range (YYYY-MM-DD).
-
-    Outputs:
-    - Displays a report showing transaction details, payments, and remaining balance for the selected driver
-      within the specified date range. If the driver number is '0', the function returns to the main menu.
-    """
+def customReport(): 
+    '''
+    This report takes payments made from revenue.dat file and driver information from the drivers.dat file
+    within specified dates and then creates a report to display payments made by drivers within the specified dates.
+    '''
     driver_data = {}
     print()
     with open('drivers.dat', 'r') as f:
@@ -267,31 +259,40 @@ def customReport():
         print()
         if driver_number in driver_data:
             driver_info = driver_data[driver_number]
-            print(f"Report for Driver {driver_number}: {driver_info['EmpName']}")
+            company_name = "HAB Taxi Service"
+            print("{:^103s}".format(company_name))
+            print("-" * 103)
+            print(f"Report for Driver: {driver_number}: ")
+            print(f"Employee Name: {driver_info['EmpName']}")
+            print(f"Address: {driver_info['EmpStreetAdd']}, {driver_info['EmpCity']}, {driver_info['EmpProv']}")
             print()
-            print("Date\t\tTransaction ID\tPayment Description\tSubtotal\tHST\tTotal")
+            print("Date          Transaction ID          Payment Description          Subtotal          HST          Total")
+            print("-" * 103)
 
             total_payments = 0
 
             for entry in revenue_data:
                 if entry['driver_id'] == driver_number and target_start_date <= entry['date'] <= target_end_date:
                     revenue_info = entry['revenue_info']
-                    print(" "*10, "Transaction ", "Payment")
-                    print("Date", " "*9, "ID", " "*5, "Suntotal"*10, "HST", " "*5, "Total" )
-                    print(f"{entry}\t{entry}\t\t{revenue_info}\t{revenue_info:.2f}\t\t{revenue_info:.2f}\t{revenue_info:.2f}")
+                    print("{:<13s}      {:<18d} {:<25s}     {:<15.2f} {:<11.2f}  {:<11.2f}".format(
+                        entry['date'], entry['transaction_id'], revenue_info['payment_description'],
+                        revenue_info['subtotal'], revenue_info['hst'], revenue_info['total']))
                     total_payments += revenue_info['total']
 
-            print("\nSummary:")
+            print("-" * 103)
             remaining_balance = driver_info['BalDue'] - total_payments
             if remaining_balance < 0:
                 remaining_balance = 0
             print(f"Total payments within the date range: ${total_payments:.2f}")
             print(f"Remaining balance owing: ${remaining_balance:.2f}")
+            print()
         else:
             print(f"Driver {driver_number} not found.")
 
     if __name__ == "__main__":
         customReport()
+
+
 
 # main program
 

@@ -262,16 +262,9 @@ def companyProfitListing(start_date, end_date):
 
 def customReport():
     """
-    Generates a custom financial report for a specific driver within a given date range.
-
-    Parameters:
-    - driver_number_input (str): The driver number to generate the report for. Enter '0' to return to the main menu.
-    - target_start_date (str): The start date of the date range (YYYY-MM-DD).
-    - target_end_date (str): The end date of the date range (YYYY-MM-DD).
-
-    Outputs:
-    - Displays a report showing transaction details, payments, and remaining balance for the selected driver
-      within the specified date range. If the driver number is '0', the function returns to the main menu.
+    Custom report uses data from revenue.dat and drivers.dat to generate a report
+    that shows the payments for each driver, the total amount of payments made, and 
+    the total amount of money owed for a specified period of time
     """
     driver_data = {}
     print()

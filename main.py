@@ -266,7 +266,6 @@ def customReport():
     that shows the payments for each driver, the total amount of payments made, and 
     the total amount of money owed for a specified period of time
     """
-    driver_data = {}
     print()
     with open('drivers.dat', 'r') as f:
         next(f) 
@@ -282,34 +281,8 @@ def customReport():
                 'EmpProv': data[6],
                 'EmpPhone': data[7],
                 'EmpEmail': data[8],
-                'BalDue': float(data[9]) if data[9] != 'Yes' else 0.0,
-            }
-            driver_data[driver_id] = driver_info
-def customReport():
-    revenue_data = []
-    with open('revenue.dat', 'r') as f:
-        next(f)  
-        for line in f:
-            data = line.strip().split(',')
-            transaction_id = int(data[0])
-            date = data[1]
-            payment_description = data[2]
-            driver_id = int(data[3])
-            subtotal = float(data[4])
-            hst = float(data[5])
-            total = float(data[6])
-            revenue_info = {
-                'payment_description': payment_description,
-                'subtotal': subtotal,
-                'hst': hst,
-                'total': total
-            }
-            revenue_data.append({
-                'transaction_id': transaction_id,
-                'date': date,
-                'driver_id': driver_id,
-                'revenue_info': revenue_info
-            })
+                'BalDue': float(data[9]) if data[9] != 'Yes' else 0.0,}
+        driver_info[driver_id] = driver_info
 
     while True:
         driver_number_input = input("Enter driver number (or 0 to return to the main menu): ")
@@ -325,8 +298,8 @@ def customReport():
         target_start_date = input("Enter the start date of the range (YYYY-MM-DD): ")
         target_end_date = input("Enter the end date of the range (YYYY-MM-DD): ")
         print()
-        if driver_number in driver_data:
-            driver_info = driver_data[driver_number]
+        if driver_number in driver_info:
+            driver_info = driver_info[driver_number]
             company_name = "HAB Taxi Service"
             print("{:^78s}".format(company_name))
             print("-" * 78)
@@ -338,7 +311,7 @@ def customReport():
 
             total_payments = 0
 
-            for entry in revenue_data:
+            for entry in revenue_info:
                 if entry['driver_id'] == driver_number and target_start_date <= entry['date'] <= target_end_date:
                     revenue_info = entry['revenue_info']
                     print("{:<10s} {:<15d} {:<25s} {:<12.2f} {:<8.2f} {:<8.2f}".format(
@@ -360,44 +333,43 @@ def customReport():
 
 
 # Main program
-if __name__ == "__main__":
-    while True:
-        print()
-        print("           HAB Taxi Services")
-        print("        Company Services System")
-        print()
-        print("1. Enter a New Employee (driver)")
-        print("2. Enter Company Revenues")
-        print("3. Enter Company Expenses")
-        print("4. Track Car Rentals")
-        print("5. Record Employee Payment")
-        print("6. Print Company Profit Listing")
-        print("7. Print Driver Financial Listing")
-        print("8. Custom report")
-        print("9. Quit Program")
-        print()
+while True:
+    print()
+    print("           HAB Taxi Services")
+    print("        Company Services System")
+    print()
+    print("1. Enter a New Employee (driver)")
+    print("2. Enter Company Revenues")
+    print("3. Enter Company Expenses")
+    print("4. Track Car Rentals")
+    print("5. Record Employee Payment")
+    print("6. Print Company Profit Listing")
+    print("7. Print Driver Financial Listing")
+    print("8. Custom report")
+    print("9. Quit Program")
+    print()
 
-        try:
-            userInput = int(input("Enter a number of 1 through 9: "))
-        except:
-            print("Please enter a valid number.")
-        else:
-            if userInput == 1:
-                newEmployee()
-            elif userInput == 2:
-                companyRevenues()
-            elif userInput == 3:
-                companyExpenses()
-            elif userInput == 4:
-                carRentals()
-            elif userInput == 5:
-                employeePayment()
-            elif userInput == 6:
-                companyProfitListing()
-            elif userInput == 7:
-                driverFinancialListing()
-            elif userInput == 8:
-                customReport()
-            elif userInput == 9:
-                print("\nSystem entering sleep mode. Thanks for using the company system.")
-                break
+    try:
+        userInput = int(input("Enter a number of 1 through 9: "))
+    except:
+        print("Please enter a valid number.")
+    else:
+        if userInput == 1:
+            newEmployee()
+        elif userInput == 2:
+            companyRevenues()
+        elif userInput == 3:
+            companyExpenses()
+        elif userInput == 4:
+            carRentals()
+        elif userInput == 5:
+            employeePayment()
+        elif userInput == 6:
+            companyProfitListing()
+        elif userInput == 7:
+            driverFinancialListing()
+        elif userInput == 8:
+            customReport()
+        elif userInput == 9:
+            print("\nSystem entering sleep mode. Thanks for using the company system.")
+            break

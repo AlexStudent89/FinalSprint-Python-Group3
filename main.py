@@ -260,6 +260,112 @@ def companyProfitListing(start_date, end_date):
     print("\n\nXXXXXXXXXXXXXX\nXXXXXXXXXXXXXX\n")
     print(f"Profit Loss: ${total_profit_loss:.2f}\n")
 
+def customReport():
+    """
+    Generates a custom financial report for a specific driver within a given date range.
+
+    Parameters:
+    - driver_number_input (str): The driver number to generate the report for. Enter '0' to return to the main menu.
+    - target_start_date (str): The start date of the date range (YYYY-MM-DD).
+    - target_end_date (str): The end date of the date range (YYYY-MM-DD).
+
+    Outputs:
+    - Displays a report showing transaction details, payments, and remaining balance for the selected driver
+      within the specified date range. If the driver number is '0', the function returns to the main menu.
+    """
+    driver_data = {}
+    print()
+    with open('drivers.dat', 'r') as f:
+        next(f) 
+        for line in f:
+            data = line.strip().split(',')
+            driver_id = int(data[0])
+            driver_info = {
+                'LicenseNum': data[1],
+                'CarID': data[2],
+                'EmpName': data[3],
+                'EmpStreetAdd': data[4],
+                'EmpCity': data[5],
+                'EmpProv': data[6],
+                'EmpPhone': data[7],
+                'EmpEmail': data[8],
+                'BalDue': float(data[9]) if data[9] != 'Yes' else 0.0,
+            }
+            driver_data[driver_id] = driver_info
+def customReport():
+    revenue_data = []
+    with open('revenue.dat', 'r') as f:
+        next(f)  
+        for line in f:
+            data = line.strip().split(',')
+            transaction_id = int(data[0])
+            date = data[1]
+            payment_description = data[2]
+            driver_id = int(data[3])
+            subtotal = float(data[4])
+            hst = float(data[5])
+            total = float(data[6])
+            revenue_info = {
+                'payment_description': payment_description,
+                'subtotal': subtotal,
+                'hst': hst,
+                'total': total
+            }
+            revenue_data.append({
+                'transaction_id': transaction_id,
+                'date': date,
+                'driver_id': driver_id,
+                'revenue_info': revenue_info
+            })
+
+    while True:
+        driver_number_input = input("Enter driver number (or 0 to return to the main menu): ")
+        if driver_number_input == '0':
+            break
+
+        try:
+            driver_number = int(driver_number_input)
+        except ValueError:
+            print("Invalid input. Please enter a valid driver number or 0 to return to the main menu.")
+            continue
+        
+        target_start_date = input("Enter the start date of the range (YYYY-MM-DD): ")
+        target_end_date = input("Enter the end date of the range (YYYY-MM-DD): ")
+        print()
+        if driver_number in driver_data:
+            driver_info = driver_data[driver_number]
+            company_name = "HAB Taxi Service"
+            print("{:^78s}".format(company_name))
+            print("-" * 78)
+            print(f"Report for Driver: {driver_number}: ")
+            print(f"Employee Name: {driver_info['EmpName']}")
+            print(f"Address: {driver_info['EmpStreetAdd']}, {driver_info['EmpCity']}, {driver_info['EmpProv']}")
+            print("Date     Transaction ID     Payment Description     Subtotal     HST     Total")
+            print("-" * 78)
+
+            total_payments = 0
+
+            for entry in revenue_data:
+                if entry['driver_id'] == driver_number and target_start_date <= entry['date'] <= target_end_date:
+                    revenue_info = entry['revenue_info']
+                    print("{:<10s} {:<15d} {:<25s} {:<12.2f} {:<8.2f} {:<8.2f}".format(
+                        entry['date'], entry['transaction_id'], revenue_info['payment_description'],
+                        revenue_info['subtotal'], revenue_info['hst'], revenue_info['total']))
+                    total_payments += revenue_info['total']
+
+            print("-" * 78)
+            remaining_balance = driver_info['BalDue'] - total_payments
+            if remaining_balance < 0:
+                remaining_balance = 0
+            print(f"Total payments within the date range: ${total_payments:.2f}")
+            print(f"Remaining balance owing: ${remaining_balance:.2f}")
+        else:
+            print(f"Driver {driver_number} not found.")
+
+    if __name__ == "__main__":
+        customReport()
+
+
 # Main program
 if __name__ == "__main__":
     while True:
@@ -285,10 +391,20 @@ if __name__ == "__main__":
         else:
             if userInput == 1:
                 newEmployee()
+            elif userInput == 2:
+                companyRevenues()
+            elif userInput == 3:
+                companyExpenses()
+            elif userInput == 4:
+                carRentals()
+            elif userInput == 5:
+                employeePayment()
             elif userInput == 6:
-                start_date = input("Enter the start date (YYYY-MM-DD): ")
-                end_date = input("Enter the end date (YYYY-MM-DD): ")
-                companyProfitListing(start_date, end_date)
+                companyProfitListing()
+            elif userInput == 7:
+                driverFinancialListing()
+            elif userInput == 8:
+                customReport()
             elif userInput == 9:
                 print("\nSystem entering sleep mode. Thanks for using the company system.")
                 break

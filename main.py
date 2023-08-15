@@ -229,67 +229,77 @@ def newEmployee():
     # continue prompt
 # def carRentals():
 def companyProfitListing():
-    start_date = input("Enter the start date (YYYY-MM-DD): ")
-    end_date = input("Enter the end date (YYYY-MM-DD): ")
-    
-    expenses = []
-    revenue = []
+    while True:
+        start_date = input("Enter the start date (YYYY-MM-DD): ")
+        
+        # Check if the start_date is blank and exit the loop if it is
+        if not start_date.strip():
+            break
+        
+        end_date = input("Enter the end date (YYYY-MM-DD): ")
+        
+        print("-" * 100)
+        print(" " * 37 + "HAB Taxi Services - Profit Listing Report")
+        print("-" * 100)
+        print(f"Report Period: {start_date} to {end_date}\n")
+        
+        expenses = []
+        revenue = []
 
-    with open("expenses.dat", "r") as expenses_file:
-         lines = expenses_file.readlines() 
-         for line in lines: 
-            data = line.strip().split(',') 
-            expenses.append({ 
-                "InvNum": int(data[0]),
-                "DriverID": int(data[1]),
-                "CarID": int(data[2]),
-                "InvDate": data[3],
-                "ItemName": data[4],
-                "ItemNum": int(data[5]),
-                "Description": data[6],
-                "Quantity": int(data[7]),
-                "UnitCost": float(data[8]),
-                "Subtotal": float(data[9]),
-                "HST": float(data[10]),
-                "Total": float(data[11])
-            })
+        with open("expenses.dat", "r") as expenses_file:
+            lines = expenses_file.readlines() 
+            for line in lines: 
+                data = line.strip().split(',') 
+                expenses.append({ 
+                    "InvNum": int(data[0]),
+                    "DriverID": int(data[1]),
+                    "CarID": int(data[2]),
+                    "InvDate": data[3],
+                    "ItemName": data[4],
+                    "ItemNum": int(data[5]),
+                    "Description": data[6],
+                    "Quantity": int(data[7]),
+                    "UnitCost": float(data[8]),
+                    "Subtotal": float(data[9]),
+                    "HST": float(data[10]),
+                    "Total": float(data[11])
+                })
 
+        with open("revenue.dat", "r") as revenue_file:
+            next(revenue_file) 
+            for line in revenue_file:
+                data = line.strip().split(',')
+                revenue.append({
+                    "InvNum": int(data[0]),
+                    "InvDate": data[1],
+                    "RevType": data[2],
+                    "DriverID": int(data[3]),
+                    "Subtotal": float(data[4]),
+                    "HSTamt": float(data[5]),
+                    "Total": float(data[6]),
+                })
 
-    with open("revenue.dat", "r") as revenue_file:
-        next(revenue_file) 
-        for line in revenue_file:
-            data = line.strip().split(',')
-            revenue.append({
-                "InvNum": int(data[0]),
-                "InvDate": data[1],
-                "RevType": data[2],
-                "DriverID": int(data[3]),
-                "Subtotal": float(data[4]),
-                "HSTamt": float(data[5]),
-                "Total": float(data[6]),
-            })
+        total_revenue = sum(rev["HSTamt"] for rev in revenue)
+        total_expenses = sum(expense["Subtotal"] + expense["HST"] for expense in expenses)
+        total_profit_loss = total_revenue - total_expenses
 
-    total_revenue = sum(rev["HSTamt"] for rev in revenue)
-    total_expenses = sum(expense["Subtotal"] + expense["HST"] for expense in expenses)
-    total_profit_loss = total_revenue - total_expenses
+        print("Revenues:")
+        print(f"Total Revenue: ${total_revenue:.2f}")
+        print("{:<50s}Revenue Breakdown: {:>50s}Description:")
+        for i, rev in enumerate(revenue, start=1):
+            if start_date <= rev["InvDate"] <= end_date:
+                print(f"  Revenue {i}: ${rev['HSTamt']:.2f}{' ' * 25}{rev['RevType']}")
 
+        print("\nExpenses:")
+        print(f"Total Expenses: ${total_expenses:.2f}")
+        print("Expenses Breakdown:                           Description:")
+        for i, expense in enumerate(expenses, start=1):
+            if start_date <= expense["InvDate"] <= end_date:
+                print(f"  Expenses {i}: ${expense['Total']:.2f}{' ' * 25}{expense['Description']}")
 
-    print("Total Revenue:", total_revenue)
-    print("Total Expenses:", total_expenses)
-    print("Total Profit/Loss:", total_profit_loss)
-
-
-    print("\nRevenue Details:")
-    for rev in revenue:
-        if start_date <= rev["InvDate"] <= end_date:
-            print(f"InvNum: {rev['InvNum']}, InvDate: {rev['InvDate']}, Subtotal: {rev['Subtotal']}, HST: {rev['HSTamt']}, Total: {rev['Total']}")
-
-    print("\nExpenses Details:")
-    for expense in expenses:
-        if start_date <= expense["InvDate"] <= end_date:
-            print(f"InvNum: {expense['InvNum']}, InvDate: {expense['InvDate']}, Description: {expense['Description']}, Subtotal: {expense['Subtotal']}, HST: {expense['HST']}, Total: {expense['Total']}")
-
-
+        print("-" * 100)
+        print(f"Profit Loss: ${total_profit_loss:.2f}")
+        print("-" * 100)
 
 def customReport():
     """

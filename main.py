@@ -254,6 +254,7 @@ def companyProfitListing():
                 "Total": float(data[11])
             })
 
+
     with open("revenue.dat", "r") as revenue_file:
         next(revenue_file) 
         for line in revenue_file:

@@ -236,10 +236,10 @@ def companyProfitListing():
     revenue = []
 
     with open("expenses.dat", "r") as expenses_file:
-        next(expenses_file)  
-        for line in expenses_file:
-            data = line.strip().split(',')
-            expenses.append({
+         lines = expenses_file.readlines() 
+         for line in lines: 
+            data = line.strip().split(',') 
+            expenses.append({ 
                 "InvNum": int(data[0]),
                 "DriverID": int(data[1]),
                 "CarID": int(data[2]),
@@ -264,10 +264,9 @@ def companyProfitListing():
                 "InvDate": data[1],
                 "RevType": data[2],
                 "DriverID": int(data[3]),
-                "Description": data[4],
-                "Subtotal": float(data[5]),
-                "HSTamt": float(data[6]),
-                "Total": float(data[7]),
+                "Subtotal": float(data[4]),
+                "HSTamt": float(data[5]),
+                "Total": float(data[6]),
             })
 
     total_revenue = sum(rev["HSTamt"] for rev in revenue)
@@ -283,7 +282,7 @@ def companyProfitListing():
     print("\nRevenue Details:")
     for rev in revenue:
         if start_date <= rev["InvDate"] <= end_date:
-            print(f"InvNum: {rev['InvNum']}, InvDate: {rev['InvDate']}, Description: {rev['Description']}, Subtotal: {rev['Subtotal']}, HST: {rev['HSTamt']}, Total: {rev['Total']}")
+            print(f"InvNum: {rev['InvNum']}, InvDate: {rev['InvDate']}, Subtotal: {rev['Subtotal']}, HST: {rev['HSTamt']}, Total: {rev['Total']}")
 
     print("\nExpenses Details:")
     for expense in expenses:

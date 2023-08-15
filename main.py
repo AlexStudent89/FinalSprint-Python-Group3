@@ -228,9 +228,47 @@ def newEmployee():
     # print receipt
     # continue prompt
 # def carRentals():
+def companyProfitListing():
+    start_date = input("Enter the start date (YYYY-MM-DD): ")
+    end_date = input("Enter the end date (YYYY-MM-DD): ")
 
+    def read_expenses_data(filename):
+        expenses = []
+        with open(filename, "r") as f:
+            lines = f.readlines()
+            for line in lines[1:]:
+                data = line.strip().split(",")
+                if len(data) == 12:
+                    expenses.append({
+                        "InvNum": int(data[0]),
+                        "DriverID": int(data[1]),
+                        "CarID": int(data[2]),
+                        "InvDate": data[3],
+                        "ItemName": data[4],
+                        "ItemNum": int(data[5]),
+                        "Description": data[6],
+                        "Quantity": int(data[7]),
+                        "UnitCost": float(data[8]),
+                        "Subtotal": float(data[9]),
+                        "HST": float(data[10]),
+                        "Total": float(data[11])
+                    })
+        return expenses
 
-def companyProfitListing(start_date, end_date):
+    def read_revenue_data(filename):
+        revenue = []
+        with open(filename, "r") as f:
+            lines = f.readlines()
+            for line in lines[1:]:
+                data = line.strip().split(",")
+                if len(data) == 3:
+                    revenue.append({
+                        "InvNum": int(data[0]),
+                        "InvDate": data[1],
+                        "HSTamt": float(data[2])
+                    })
+        return revenue
+
     expenses = read_expenses_data("expenses.dat")
     revenue = read_revenue_data("revenue.dat")
 
@@ -241,24 +279,20 @@ def companyProfitListing(start_date, end_date):
     expenses_breakdown = {f"Expenses {i+1}": expense["Quantity"] * expense["UnitCost"] + expense["HST"] for i, expense in enumerate(expenses)}
 
     total_profit_loss = total_revenue - total_expenses
+    print("\nCompany Profit Listing")
+    print("-----------------------")
+    print("Start Date:", start_date)
+    print("End Date:", end_date)
+    print("\nTotal Revenue:", total_revenue)
+    print("\nRevenue Breakdown:")
+    for rev_label, rev_amt in revenue_breakdown.items():
+        print(f"{rev_label}: {rev_amt:.2f}")
+    print("\nTotal Expenses:", total_expenses)
+    print("\nExpenses Breakdown:")
+    for exp_label, exp_amt in expenses_breakdown.items():
+        print(f"{exp_label}: {exp_amt:.2f}")
+    print("\nTotal Profit/Loss:", total_profit_loss)
 
-    print("HAB Taxi Services - Profit Listing Report")
-    print(f"Report Period: {start_date} to {end_date}")
-    print("\nRevenues:")
-    print(f"     Total Revenue: ${total_revenue:.2f}")
-    print("     Revenue Breakdown:")
-    for category, amount in revenue_breakdown.items():
-        print(f"          {category}: ${amount:.2f}")
-
-    print("\n\nDescription:\n\nXXXXXXXXXXXXXX\nXXXXXXXXXXXXXX\n")
-    print("Expenses:")
-    print(f"    Total Expenses: ${total_expenses:.2f}")
-    print("    Expenses Breakdown:")
-    for category, amount in expenses_breakdown.items():
-        print(f"        {category}: ${amount:.2f}")
-
-    print("\n\nXXXXXXXXXXXXXX\nXXXXXXXXXXXXXX\n")
-    print(f"Profit Loss: ${total_profit_loss:.2f}\n")
 
 def customReport():
     """
@@ -266,13 +300,13 @@ def customReport():
     that shows the payments for each driver, the total amount of payments made, and 
     the total amount of money owed for a specified period of time
     """
-    print()
+    driver_info = {}
     with open('drivers.dat', 'r') as f:
         next(f) 
         for line in f:
             data = line.strip().split(',')
             driver_id = int(data[0])
-            driver_info = {
+            driver_info[driver_id] = {
                 'LicenseNum': data[1],
                 'CarID': data[2],
                 'EmpName': data[3],
@@ -281,8 +315,23 @@ def customReport():
                 'EmpProv': data[6],
                 'EmpPhone': data[7],
                 'EmpEmail': data[8],
-                'BalDue': float(data[9]) if data[9] != 'Yes' else 0.0,}
-        driver_info[driver_id] = driver_info
+                'BalDue': float(data[9]) if data[9] != 'Yes' else 0.0,
+            }
+
+    revenue_info = []
+    with open('revenue.dat', 'r') as f:
+        next(f)
+        for line in f:
+            data = line.strip().split(',')
+            revenue_info.append({
+                'transaction_id': int(data[0]),
+                'date': data[1],
+                'payment_description': data[2],
+                'driver_id': int(data[3]),
+                'subtotal': float(data[4]),
+                'hst': float(data[5]),
+                'total': float(data[6]),
+            })
 
     while True:
         driver_number_input = input("Enter driver number (or 0 to return to the main menu): ")
@@ -298,38 +347,37 @@ def customReport():
         target_start_date = input("Enter the start date of the range (YYYY-MM-DD): ")
         target_end_date = input("Enter the end date of the range (YYYY-MM-DD): ")
         print()
+        
         if driver_number in driver_info:
-            driver_info = driver_info[driver_number]
+            driver = driver_info[driver_number]
             company_name = "HAB Taxi Service"
             print("{:^103s}".format(company_name))
             print("-" * 103)
-            print(f"Report for Driver: {driver_number}: ")
-            print(f"Employee Name: {driver_info['EmpName']}")
-            print(f"Address: {driver_info['EmpStreetAdd']}, {driver_info['EmpCity']}, {driver_info['EmpProv']}")
-            print("Date     Transaction ID     Payment Description     Subtotal     HST     Total")
+            print(f"Report for Driver: {driver_number} ")
+            print(f"Employee Name: {driver['EmpName']}")
+            print(f"Address: {driver['EmpStreetAdd']}, {driver['EmpCity']}, {driver['EmpProv']}")
+            print()
+            print("Date          Transaction ID          Payment Description          Subtotal          HST          Total")
             print("-" * 103)
 
             total_payments = 0
 
             for entry in revenue_info:
                 if entry['driver_id'] == driver_number and target_start_date <= entry['date'] <= target_end_date:
-                    revenue_info = entry['revenue_info']
-                    print("{:<10s} {:<15d} {:<25s} {:<12.2f} {:<8.2f} {:<8.2f}".format(
-                        entry['date'], entry['transaction_id'], revenue_info['payment_description'],
-                        revenue_info['subtotal'], revenue_info['hst'], revenue_info['total']))
-                    total_payments += revenue_info['total']
+                    print("{:<10s}         {:<15d}     {:<25s}   {:<12.2f}     {:<8.2f}   {:>8.2f}".format(
+                        entry['date'], entry['transaction_id'], entry['payment_description'],
+                        entry['subtotal'], entry['hst'], entry['total']))
+                    total_payments += entry['total']
 
             print("-" * 103)
-            remaining_balance = driver_info['BalDue'] - total_payments
+            remaining_balance = driver['BalDue'] - total_payments
             if remaining_balance < 0:
                 remaining_balance = 0
             print(f"Total payments within the date range: ${total_payments:.2f}")
             print(f"Remaining balance owing: ${remaining_balance:.2f}")
+            print()
         else:
             print(f"Driver {driver_number} not found.")
-
-    if __name__ == "__main__":
-        customReport()
 
 
 # Main program

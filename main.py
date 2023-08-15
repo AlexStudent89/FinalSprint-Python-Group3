@@ -301,13 +301,13 @@ def customReport():
         if driver_number in driver_info:
             driver_info = driver_info[driver_number]
             company_name = "HAB Taxi Service"
-            print("{:^78s}".format(company_name))
-            print("-" * 78)
+            print("{:^103s}".format(company_name))
+            print("-" * 103)
             print(f"Report for Driver: {driver_number}: ")
             print(f"Employee Name: {driver_info['EmpName']}")
             print(f"Address: {driver_info['EmpStreetAdd']}, {driver_info['EmpCity']}, {driver_info['EmpProv']}")
             print("Date     Transaction ID     Payment Description     Subtotal     HST     Total")
-            print("-" * 78)
+            print("-" * 103)
 
             total_payments = 0
 
@@ -319,7 +319,7 @@ def customReport():
                         revenue_info['subtotal'], revenue_info['hst'], revenue_info['total']))
                     total_payments += revenue_info['total']
 
-            print("-" * 78)
+            print("-" * 103)
             remaining_balance = driver_info['BalDue'] - total_payments
             if remaining_balance < 0:
                 remaining_balance = 0

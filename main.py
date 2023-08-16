@@ -433,50 +433,50 @@ while True:
                 break
         elif userInput == 3:
             while True:
-                    notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
-                    if notConfig != "Y" and notConfig != "N":
-                        print("Invalid response, enter Y or N please.")
-                    if notConfig == "Y":
-                        break
-                    if notConfig == "N":
-                        break
+                notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
+                if notConfig != "Y" and notConfig != "N":
+                    print("Invalid response, enter Y or N please.")
+                if notConfig == "Y":
+                    break
                 if notConfig == "N":
                     break
+            if notConfig == "N":
+                break
         elif userInput == 4:
-            while True:
-                    notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
-                    if notConfig != "Y" and notConfig != "N":
-                        print("Invalid response, enter Y or N please.")
-                    if notConfig == "Y":
-                        break
-                    if notConfig == "N":
-                        break
+        while True:
+                notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
+                if notConfig != "Y" and notConfig != "N":
+                    print("Invalid response, enter Y or N please.")
+                if notConfig == "Y":
+                    break
                 if notConfig == "N":
                     break
+            if notConfig == "N":
+                break
         elif userInput == 5:
             while True:
-                    notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
-                    if notConfig != "Y" and notConfig != "N":
-                        print("Invalid response, enter Y or N please.")
-                    if notConfig == "Y":
-                        break
-                    if notConfig == "N":
-                        break
+                notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
+                if notConfig != "Y" and notConfig != "N":
+                    print("Invalid response, enter Y or N please.")
+                if notConfig == "Y":
+                    break
                 if notConfig == "N":
                     break
+            if notConfig == "N":
+                break
         elif userInput == 6:
             companyProfitListing()
         elif userInput == 7:
             while True:
-                    notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
-                    if notConfig != "Y" and notConfig != "N":
-                        print("Invalid response, enter Y or N please.")
-                    if notConfig == "Y":
-                        break
-                    if notConfig == "N":
-                        break
+                notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
+                if notConfig != "Y" and notConfig != "N":
+                    print("Invalid response, enter Y or N please.")
+                if notConfig == "Y":
+                    break
                 if notConfig == "N":
                     break
+            if notConfig == "N":
+                break
         elif userInput == 8:
             customReport()
         elif userInput == 9:

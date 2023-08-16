@@ -443,7 +443,7 @@ while True:
             if notConfig == "N":
                 break
         elif userInput == 4:
-        while True:
+            while True:
                 notConfig = input("Option not configured. Try another menu option?(Y or N): ").upper()
                 if notConfig != "Y" and notConfig != "N":
                     print("Invalid response, enter Y or N please.")

@@ -199,6 +199,15 @@ def newEmployee():
                 elif typeOfCharges == "WEEKLY":
                     balDueSubtotal = WEEKLY_RENTAL_FEE
                     break
+                    
+        Another = input("Would you like ot add another employee?(Y or N): ").upper()
+        if Another != "Y" and Another != "N":
+            print("Invalid Response, please try again.")
+        elif Another == "N":
+            break
+        print()
+        input("Press enter to continue...")
+        print()
 
         balDueTotal = balDueSubtotal * (1 + HST_RATE)
 

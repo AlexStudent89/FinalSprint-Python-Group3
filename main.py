@@ -22,45 +22,6 @@ HST_RATE = float(f.readline())
 f.close()
 
 # Functions
-def read_expenses_data(filename):
-    expenses = []
-    with open(filename, 'r') as f:
-        lines = f.readlines()
-        for line in lines[1:]:
-            data = line.strip().split('\t') 
-            expenses.append({
-                "InvNum": int(data[0]),
-                "DriverID": int(data[1]),
-                "CarID": int(data[2]),
-                "InvDate": data[3],
-                "ItemName": data[4],
-                "ItemNum": int(data[5]),
-                "Description": data[6],
-                "Quantity": int(data[7]),
-                "UnitCost": float(data[8]),
-                "Subtotal": float(data[9]),
-                "HST": float(data[10]),
-                "Total": float(data[11])
-            })
-    return expenses
-
-def read_revenue_data(filename):
-    revenue = []
-    with open(filename, 'r') as f:
-        lines = f.readlines()
-        for line in lines[1:]:
-            data = line.strip().split(',')
-            revenue.append({
-                "TransactionID": int(data[0]),
-                "Date": data[1],
-                "PaymentDescription": data[2],
-                "DriverID": int(data[3]),
-                "Subtotal": float(data[4]),
-                "HSTamt": float(data[5]),
-                "Total": float(data[6])
-            })
-    return revenue
-
 def newEmployee():
     while True:
 
@@ -239,7 +200,7 @@ def newEmployee():
 # def carRentals():
 def companyProfitListing():
     while True:
-        start_date = input("Enter the start date (YYYY-MM-DD): ")
+        start_date = input("Enter the start date (YYYY-MM-DD) or press enter to return to main menu: : ")
         
         # Check if the start_date is blank and exit the loop if it is
         if not start_date.strip():
@@ -279,32 +240,32 @@ def companyProfitListing():
             for line in revenue_file:
                 data = line.strip().split(',')
                 revenue.append({
-                    "InvNum": int(data[0]),
-                    "InvDate": data[1],
-                    "RevType": data[2],
+                    "TransactionID": int(data[0]),
+                    "Date": data[1],
+                    "PaymentDescription": data[2],
                     "DriverID": int(data[3]),
                     "Subtotal": float(data[4]),
                     "HSTamt": float(data[5]),
                     "Total": float(data[6]),
                 })
 
-        total_revenue = sum(rev["HSTamt"] for rev in revenue)
-        total_expenses = sum(expense["Subtotal"] + expense["HST"] for expense in expenses)
+        total_revenue = sum(rev["HSTamt"] for rev in revenue if start_date <= rev["Date"] <= end_date)
+        total_expenses = sum(expense["Subtotal"] + expense["HST"] for expense in expenses if start_date <= expense["InvDate"] <= end_date)
         total_profit_loss = total_revenue - total_expenses
 
         print("Revenues:")
         print(f"Total Revenue: ${total_revenue:.2f}")
-        print("{:<50s}Revenue Breakdown: {:>50s}Description:")
+        print("Revenue Breakdown:                            Description:")
         for i, rev in enumerate(revenue, start=1):
-            if start_date <= rev["InvDate"] <= end_date:
-                print(f"  Revenue {i}: ${rev['HSTamt']:.2f}{' ' * 25}{rev['RevType']}")
+            if start_date <= rev["Date"] <= end_date:
+                print(f"  Revenue {i}: ${rev['HSTamt']:.2f}{rev['PaymentDescription']}")
 
         print("\nExpenses:")
         print(f"Total Expenses: ${total_expenses:.2f}")
         print("Expenses Breakdown:                           Description:")
         for i, expense in enumerate(expenses, start=1):
             if start_date <= expense["InvDate"] <= end_date:
-                print(f"  Expenses {i}: ${expense['Total']:.2f}{' ' * 25}{expense['Description']}")
+                print(f"  Expenses {i}: ${expense['Total']:.2f}{expense['Description']}")
 
         print("-" * 100)
         print(f"Profit Loss: ${total_profit_loss:.2f}")

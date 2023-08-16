@@ -37,31 +37,24 @@ def newEmployee():
             empFirstName = input("Enter employee first name: ").title()
             if not set(empFirstName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empFirstName == " ":
+            elif empFirstName == "":
                 print("Enter a valid name please.")
             else:
                 break
+
         while True:
             empLastName = input("Enter employee last name: ").title()
             if not set(empLastName).issubset(empNameAllowed):
                 print("Enter a valid name please.")
-            elif empLastName == " ":
+            elif empLastName == "":
                 print("Enter a valid name please.")
-            else:
-                break
-
-
-        while True:
-            empAddress = input("Enter employee address: ")
-            if empAddress == " ":
-                print("Enter a valid address.")
             else:
                 break
 
         while True:
             empCityNotAllowed = set("1234567890")
             empCity = input("Enter employee city: ")
-            if empCity == " ":
+            if empCity == "":
                 print("Enter a valid address.")
             elif set(empCity).issubset(empCityNotAllowed):
                 print("Enter a valid city please. ")
@@ -69,10 +62,17 @@ def newEmployee():
                 break
 
         while True:
+            empAddress = input("Enter employee address: ")
+            if empAddress == "":
+                print("Enter a valid address.")
+            else:
+                break
+
+        while True:
             empPostalCharAllowed = set("ASDFGHJKLQWERTYUIOPZXCVBNM")
             empPostalNumAllowed = set("1234567890")
-            empPostal = input("Enter employee postal code (X1X1X1): ").upper()
-            if empPostal == " ":
+            empPostal = input("Enter employee postal code: ").upper()
+            if empPostal == "":
                 print("Enter a valid Postal Code.")
             elif len(empPostal) != 6:
                 print("Enter a valid Postal Code without spaces.")
@@ -84,18 +84,18 @@ def newEmployee():
                 break
 
         while True:
-            provAllowed = ["NL", "ON", "QC", "SK", "MB", "NS", "NB", "PE", "AB", "BC", "NT", "NU", "YK"]
-            empProv = input("Enter employee province (XX): ").upper()
+            provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
+            empProv = input("Enter employee province: ").upper()
             if empProv not in provAllowed:
                 print("Enter a valid province please.")
-            elif empProv == " ":
+            elif empProv == "":
                 print("Enter province. ")
             else:
                 break
 
         while True:
             phoneNumAllowed = set("1234567890-")
-            empPhone = input("Enter employee phone number(999-999-9999): ")
+            empPhone = input("Enter employee phone number: ")
             if not set(empPhone).issubset(phoneNumAllowed):
                 print("Enter a valid number please. ")
             elif len(empPhone) != 12:
@@ -109,7 +109,7 @@ def newEmployee():
             except:
                 print("Enter a valid number please. ")
             else:
-                if licenseNum == " ":
+                if licenseNum == "":
                     print("Enter a license. ")
                 else:
                     break
@@ -160,19 +160,10 @@ def newEmployee():
                 elif typeOfCharges == "WEEKLY":
                     balDueSubtotal = WEEKLY_RENTAL_FEE
                     break
-                    
-        Another = input("Would you like ot add another employee?(Y or N): ").upper()
-        if Another != "Y" and Another != "N":
-            print("Invalid Response, please try again.")
-        elif Another == "N":
-            break
-        print()
-        input("Press enter to continue...")
-        print()
 
         balDueTotal = balDueSubtotal * (1 + HST_RATE)
 
-        f = open("drivers.dat", "a")
+        f = open("Drivers.dat", "a")
 
         driverFirstName = f.write(f"{empFirstName}, ")
         driverLastName = f.write(f"{empLastName}, ")
@@ -191,12 +182,47 @@ def newEmployee():
 
         f.close()
 
+        balDueTaxAmt = balDueTotal - balDueSubtotal
+
+        balDueSubtotalDsp = "${:,.2f}".format(balDueSubtotal)
+        balDueTotalDsp = "${:,.2f}".format(balDueTotal)
+        balDueTaxAmtDsp = "${:,.2f}".format(balDueTaxAmt)
 
 
+        print()
+        print(f" Employee added successfully.")
+        print()
 
-    # update driver num in defaults
-    # print receipt
-    # continue prompt
+        print()
+        print(f"=" * 40)
+        print(f" NEW EMPLOYEE ADDED: {empFirstName:<10s} {empLastName:<10s}")
+        print()
+        print(f" EMPLOYEE DETAILS:")
+        print(f" ADDRESS: {empAddress:<15s}, {empCity:<10s}, {empPostal:<7s}")
+        print(f" PHONE: {empPhone:<12s}")
+        print(f"=" * 40)
+        print()
+        print(f" LICENSE NUMBER: {str(licenseNum):>10s} - {licenseTimeline:<5s}")
+        print(f" INSURANCE NUMBER: {str(insuranceNum):>10s} - {insuranceCompany:<10s}")
+        print(f" EMPLOYEE OWNS CAR: {empOwnCar:<1s}")
+        print(f"=" * 40)
+        print(f" EMPLOYEE BALANCE:")
+        print()
+        print(f" SUBTOTAL: {balDueSubtotalDsp:>9s}")
+        print(f" TAXES: {balDueTaxAmtDsp:>9s}")
+        print(f" TOTAL: {balDueTotalDsp:>9s}")
+        print(f"=" * 40)
+        print()
+
+        print()
+        newEmployeeContinue = input("Do you want to enter a new employee? ").upper()
+        if newEmployeeContinue != "Y" and newEmployeeContinue != "N":
+            print("Invalid response, enter Y or N please. ")
+        elif newEmployeeContinue == "Y":
+            pass
+        else:
+            break
+
 # def carRentals():
 def companyProfitListing():
     while True:

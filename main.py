@@ -6,6 +6,7 @@
 # imports
 import csv
 import datetime
+from tabulate import tabulate
 
 
 
@@ -283,17 +284,21 @@ def companyProfitListing():
 
         print("Revenues:")
         print(f"Total Revenue: ${total_revenue:.2f}")
-        print("Revenue Breakdown:                            Description:")
+        print("Revenue Breakdown:")
+        print()
+        print("  Type:                                         Amount:")
         for i, rev in enumerate(revenue, start=1):
             if start_date <= rev["Date"] <= end_date:
-                print(f"  Revenue {i}: ${rev['HSTamt']:.2f}{rev['PaymentDescription']}")
+                print(f"  {rev['PaymentDescription']:45} ${rev['Total']:.2f}")
 
         print("\nExpenses:")
         print(f"Total Expenses: ${total_expenses:.2f}")
-        print("Expenses Breakdown:                           Description:")
+        print("Expenses Breakdown:")
+        print()
+        print("  Type:                                         Amount:")
         for i, expense in enumerate(expenses, start=1):
             if start_date <= expense["InvDate"] <= end_date:
-                print(f"  Expenses {i}: ${expense['Total']:.2f}{expense['Description']}")
+                print(f"  {expense['Description']:45} ${expense['Total']:.2f}")
 
         print("-" * 100)
         print(f"Profit Loss: ${total_profit_loss:.2f}")

@@ -234,6 +234,7 @@ def companyProfitListing():
             break
         
         end_date = input("Enter the end date (YYYY-MM-DD): ")
+        print()
         
         print("-" * 100)
         print(" " * 37 + "HAB Taxi Services - Profit Listing Report")
@@ -297,6 +298,7 @@ def companyProfitListing():
         print("-" * 100)
         print(f"Profit Loss: ${total_profit_loss:.2f}")
         print("-" * 100)
+        print()
 
 def customReport():
     """

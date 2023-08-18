@@ -7,7 +7,6 @@
 import csv
 import datetime
 
-# Constants
 
 # Functions
 def newEmployee():

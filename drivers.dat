@@ -1,22 +1,20 @@
-1923, William, Smith, 232, 45 Elm Street, Cityville, ON, B2C3D4, 555-123-4567, 232345, 07/28, 234567123, Aviva, N, Weekly, 250.0, 37.50, 287.5
-1924, Jessica, Johnson, N/A, 123 Oak Avenue, Villagetown, BC, C4D5E6, 555-987-6543, 233456, 06/27, 345678234, Desjardins, Y, N/A, 100.0, 15.00, 115.0
-1925, Michael, Williams, 234, 987 Pine Road, Hamletsville, SK, F6G7H8, 555-789-0123, 234567, 05/26, 456789345, TD, N, Daily, 75.0, 11.25, 86.25
-1926, Sarah, Lee, 235, N/A Birch Lane, Suburbville, MB, I9J1K2, 555-234-5678, 235678, 04/25, 567890456, RBC, Y, N/A, 0.0, 0.00, 0.0
-1927, Daniel, Martin, 236, 321 Maple Crescent, Cityborough, NS, L3M4N5, 555-345-6789, 236789, 03/24, 678901567, Allstate, N, Weekly, 150.0, 22.50, 172.5
-1928, Emily, Rodriguez, N/A, 234 Cedar Drive, Villetown, AB, O4P5Q6, 555-456-7890, 237890, 02/23, 789012678, Co-operators, Y, N/A, 500.0, 75.00, 575.0
-1929, David, Jackson, 238, 567 Willow Circle, Hometown, QC, R5S6T7, 555-567-8901, 238901, 01/22, 890123789, Wawanesa, N, Daily, 30.0, 4.50, 34.5
-1930, Olivia, Harris, N/A, 890 Walnut Lane, Townington, PEI, U7V8W9, 555-678-9012, 239012, 12/21, 901234890, Sun Life, Y, N/A, 1000.0, 150.00, 1150.0
-1931, Thomas, Miller, 240, 123 Elm Boulevard, Citysville, NB, X0Y1Z2, 555-789-0123, 240123, 11/20, 123456901, Manulife, N, Weekly, 80.0, 12.00, 92.0
-1932, Sophia, Wilson, N/A, 456 Oak Lane, Suburbtown, NWT, A1B2C3, 555-890-1234, 241234, 10/19, 234567012, Economical, Y, N/A, 400.0, 60.00, 460.0
-1933, Ethan, Brown, 242, 789 Pine Road, Hamletville, NT, D4E5F6, 555-901-2345, 242345, 09/18, 345678123, Industrial Alliance, N, Daily, 60.0, 9.00, 69.0
-1934, Isabella, Clark, N/A, 987 Birch Avenue, Villagetown, BC, G7H8I9, 555-012-3456, 243456, 08/17, 456789234, Co-operators, Y, N/A, 20.0, 3.00, 23.0
-1935, Jacob, Davis, 244, 654 Maple Street, Townsville, ON, J1K2L3, 555-123-4567, 244567, 07/16, 567890345, Aviva, N, Weekly, 150.0, 22.50, 172.5
-1936, Mia, Taylor, N/A, 321 Cedar Place, Cityborough, NS, M4N5O6, 555-234-5678, 245678, 06/15, 678901456, RBC, Y, N/A, 0.0, 0.00, 0.0
-1937, Noah, Anderson, 246, 567 Willow Road, Villetown, AB, P7Q8R9, 555-345-6789, 246789, 05/14, 789012567, TD, N, Daily, 75.0, 11.25, 86.25
-1938, Emma, Martinez, N/A, 890 Walnut Drive, Hometown, PEI, S0T1U2, 555-456-7890, 247890, 04/13, 890123678, Desjardins, Y, N/A, 200.0, 30.00, 230.0
-1939, Liam, Lewis, 248, 123 Elm Lane, Townington, NB, V3W4X5, 555-567-8901, 248901, 03/12, 901234789, Intact, N, Weekly, 100.0, 15.00, 115.0
-1940, Ava, Wright, N/A, 456 Oak Road, Citysville, QC, Y6Z1A2, 555-678-9012, 249012, 02/11, 123456890, Aviva, Y, N/A, 0.0, 0.00, 0.0
-1941, Jackson, Scott, 250, 789 Pine Avenue, Suburbtown, NWT, B3C4D5, 555-789-0123, 250123, 01/10, 234567901, Sun Life, N, Daily, 40.0, 6.00, 46.0
-1942, Sophia, Johnson, N/A, 987 Birch Boulevard, Hamletville, NT, E5F6G7, 555-890-1234, 251234, 12/09, 345678012, Wawanesa, Y, N/A, 0.0, 0.00, 0.0
-
-1922,Billy, Bob, 123,123 sesame st, St. John'S, NL, A1B4P8, 403-429-0144, 23123132, 06/23, 1231231, Intact, N, WEEKLY, 300.0, 345.01922,Billy, Bob, N/A,123 SESAME ST., St. John'S, NL, A1B4P8, 403-429-0144, 231231, 07/23, 213124132, Intact, Y, N/A, 175.0, 201.24999999999997
+1902, Billy, Bob, 322, 123 Sesame Street, Hamletsville, AB, T4B2O1, 999-322-324, 432432, 09/29, 231321433, Intact, N, Daily, 0,00, 0.00, 0.00
+1903, William, Smith, 232, 45 Elm Street, Cityville, ON, B2C3D4, 555-123-4567, 232345, 07/28, 234567123, Aviva, N, Weekly, 250.00, 37.50, 287.5
+1904, Jessica, Johnson, N/A, 123 Oak Avenue, Villagetown, BC, C4D5E6, 555-987-6543, 233456, 06/27, 345678234, Desjardins, Y, N/A, 100.0, 15.00, 115.0
+1905, Michael, Williams, 234, 987 Pine Road, Hamletsville, SK, F6G7H8, 555-789-0123, 234567, 05/26, 456789345, TD, N, Daily, 75.00, 11.25, 86.25
+1906, Sarah, Lee, 235, N/A Birch Lane, Suburbville, MB, I9J1K2, 555-234-5678, 235678, 04/25, 567890456, RBC, Y, N/A, 0.00, 0.00, 0.00
+1907, Daniel, Martin, 236, 321 Maple Crescent, Cityborough, NS, L3M4N5, 555-345-6789, 236789, 03/24, 678901567, Allstate, N, Weekly, 150.00, 22.50, 172.50
+1908, Emily, Rodriguez, N/A, 234 Cedar Drive, Villetown, AB, O4P5Q6, 555-456-7890, 237890, 02/23, 789012678, Co-operators, Y, N/A, 500.00, 75.00, 575.00
+1909, David, Jackson, 238, 567 Willow Circle, Hometown, QC, R5S6T7, 555-567-8901, 238901, 01/22, 890123789, Wawanesa, N, Daily, 30.00, 4.50, 34.50
+1910, Olivia, Harris, N/A, 890 Walnut Lane, Townington, PEI, U7V8W9, 555-678-9012, 239012, 12/21, 901234890, Sun Life, Y, N/A, 1000.00, 150.00, 1150.00
+1911, Thomas, Miller, 240, 123 Elm Boulevard, Citysville, NB, X0Y1Z2, 555-789-0123, 240123, 11/20, 123456901, Manulife, N, Weekly, 80.00, 12.00, 92.00
+1912, Sophia, Wilson, N/A, 456 Oak Lane, Suburbtown, NWT, A1B2C3, 555-890-1234, 241234, 10/19, 234567012, Economical, Y, N/A, 400.00, 60.00, 460.00
+1913, Ethan, Brown, 242, 789 Pine Road, Hamletville, NT, D4E5F6, 555-901-2345, 242345, 09/18, 345678123, Industrial Alliance, N, Daily, 60.00, 9.00, 69.00
+1914, Isabella, Clark, N/A, 987 Birch Avenue, Villagetown, BC, G7H8I9, 555-012-3456, 243456, 08/17, 456789234, Co-operators, Y, N/A, 20.00, 3.00, 23.00
+1915, Jacob, Davis, 244, 654 Maple Street, Townsville, ON, J1K2L3, 555-123-4567, 244567, 07/16, 567890345, Aviva, N, Weekly, 150.00, 22.50, 172.50
+1916, Mia, Taylor, N/A, 321 Cedar Place, Cityborough, NS, M4N5O6, 555-234-5678, 245678, 06/15, 678901456, RBC, Y, N/A, 0.00, 0.00, 0.00
+1917, Noah, Anderson, 246, 567 Willow Road, Villetown, AB, P7Q8R9, 555-345-6789, 246789, 05/14, 789012567, TD, N, Daily, 75.00, 11.25, 86.25
+1918, Emma, Martinez, N/A, 890 Walnut Drive, Hometown, PEI, S0T1U2, 555-456-7890, 247890, 04/13, 890123678, Desjardins, Y, N/A, 200.00, 30.00, 230.00
+1919, Liam, Lewis, 248, 123 Elm Lane, Townington, NB, V3W4X5, 555-567-8901, 248901, 03/12, 901234789, Intact, N, Weekly, 100.00, 15.00, 115.00
+1920, Ava, Wright, N/A, 456 Oak Road, Citysville, QC, Y6Z1A2, 555-678-9012, 249012, 02/11, 123456890, Aviva, Y, N/A, 0.00, 0.00, 0.00
+1921, Jackson, Scott, 250, 789 Pine Avenue, Suburbtown, NWT, B3C4D5, 555-789-0123, 250123, 01/10, 234567901, Sun Life, N, Daily, 40.00, 6.00, 46.00

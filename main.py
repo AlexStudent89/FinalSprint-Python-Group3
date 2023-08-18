@@ -255,7 +255,7 @@ def newEmployee():
 
 def companyProfitListing():
     while True:
-        start_date = input("Enter the start date (YYYY-MM-DD) or press enter to return to main menu: : ")
+        start_date = input("Enter the start date (YYYY-MM-DD) or press enter to return to main menu: ")
         if not start_date.strip():
             break
         

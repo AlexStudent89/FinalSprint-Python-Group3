@@ -6,9 +6,6 @@
 # imports
 import csv
 import datetime
-from tabulate import tabulate
-
-
 
 # Constants
 f = open('defaults.dat', 'r')
@@ -69,6 +66,15 @@ def newEmployee():
             else:
                 break
 
+        while True:
+            provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
+            empProv = input("Enter employee province(XX): ").upper()
+            if empProv not in provAllowed:
+                print("Enter a valid province please.")
+            elif empProv == "":
+                print("Enter province. ")
+            else:
+                break
 
         while True:
             empPostalCharAllowed = set("ASDFGHJKLQWERTYUIOPZXCVBNM")
@@ -85,15 +91,6 @@ def newEmployee():
             else:
                 break
 
-        while True:
-            provAllowed = ["NL", "ON", "ONT", "QC", "SK", "MB", "NS", "NB", "PEI", "AB", "BC", "NWT", "NT", "YK"]
-            empProv = input("Enter employee province(XX): ").upper()
-            if empProv not in provAllowed:
-                print("Enter a valid province please.")
-            elif empProv == "":
-                print("Enter province. ")
-            else:
-                break
 
         while True:
             phoneNumAllowed = set("1234567890-")
@@ -153,6 +150,7 @@ def newEmployee():
                 print("Invalid response, enter Y or N please. ")
             elif empOwnCar == "Y":
                 balDueSubtotal = MONTHLY_STAND_FEE
+                typeOfCharges = "N/A"
                 break
             elif empOwnCar == "N":
                 typeOfCharges = input("Type of Rental(Daily or Weekly): ").upper()
@@ -163,24 +161,34 @@ def newEmployee():
                     balDueSubtotal = WEEKLY_RENTAL_FEE
                     break
 
+
+        if empOwnCar == "N":
+            empCarNum = input("Enter car ID(999): ")
+        else:
+            empCarNum = "N/A"
+
         balDueTotal = balDueSubtotal * (1 + HST_RATE)
 
-        f = open("Drivers.dat", "a")
-
-        driverFirstName = f.write(f"{empFirstName}, ")
-        driverLastName = f.write(f"{empLastName}, ")
-        driverAddress = f.write(f"{empAddress}, ")
-        driverCity = f.write(f"{empCity}, ")
-        driverProv = f.write(f"{empProv}, ")
-        driverPostal = f.write(f"{empPostal}, ")
-        driverPhone = f.write(f"{empPhone}, ".format(str(empPhone)))
-        driverLicense = f.write(f"{licenseNum}, ".format(str(licenseNum)))
-        driverLicenseTimeline = f.write(f"{licenseTimeline}, ")
-        driverInsurance = f.write(f"{insuranceNum}, ")
-        driverInsuranceCompany = f.write(f"{insuranceCompany}, ")
-        driverCarYN = f.write(f"{empOwnCar}, ")
-        driverBalDueSubtotal = f.write(f"{balDueSubtotal}, ".format(str(balDueSubtotal)))
-        driverBalDueTotal = f.write(f"{balDueTotal}, \n".format(str(balDueTotal)))
+        f = open("drivers.dat", "a")
+        f.write("\n") 
+        f.write(f"{empDriverNum},")
+        f.write(f"{empFirstName}, ")
+        f.write(f"{empLastName}, ")
+        f.write(f"{empCarNum},")
+        f.write(f"{empAddress}, ")
+        f.write(f"{empCity}, ")
+        f.write(f"{empProv}, ")
+        f.write(f"{empPostal}, ")
+        f.write(f"{empPhone}, ")
+        f.write(f"{licenseNum}, ")
+        f.write(f"{licenseTimeline}, ")
+        f.write(f"{insuranceNum}, ")
+        f.write(f"{insuranceCompany}, ")
+        f.write(f"{empOwnCar}, ")
+        f.write(f"{typeOfCharges}, ")
+        f.write(f"{balDueSubtotal}, ")
+        f.write(f"{balDueTotal}")
+        f.close()
 
         f.close()
 
@@ -225,12 +233,9 @@ def newEmployee():
         else:
             break
 
-# def carRentals():
 def companyProfitListing():
     while True:
         start_date = input("Enter the start date (YYYY-MM-DD) or press enter to return to main menu: : ")
-        
-        # Check if the start_date is blank and exit the loop if it is
         if not start_date.strip():
             break
         

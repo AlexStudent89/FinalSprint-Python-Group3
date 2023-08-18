@@ -1,21 +1,20 @@
-DriverID,LicenseNum,CarID,EmpName,EmpStreetAdd,EmpCity,EmpProv,EmpPhone,EmpEmail,BalDue,OwnsCar
-1902,AB1234,1922,John Doe,123 Main St,St. John's,NL,709-555-1234,john@example.com,0,No
-1903,CD5678,1923,Jane Smith,456 Elm St,St. John's,NL,709-555-5678,jane@example.com,0,Yes
-1904,EF9012,1924,Michael Johnson,789 Oak St,St. John's,NL,709-555-9012,michael@example.com,50,No
-1905,GH3456,1925,Emily Williams,987 Pine St,St. John's,NL,709-555-3456,emily@example.com,100,Yes
-1906,IJ7890,1926,Robert Lee,654 Birch St,St. John's,NL,709-555-7890,robert@example.com,0,No
-1907,KL2345,1927,Linda Martin,321 Maple St,St. John's,NL,709-555-2345,linda@example.com,75,Yes
-1908,MN6789,1928,David Rodriguez,234 Cedar St,St. John's,NL,709-555-6789,david@example.com,25,No
-1909,OP1234,1929,Susan Jackson,567 Willow St,St. John's,NL,709-555-1234,susan@example.com,0,Yes
-1910,QR5678,1930,Thomas Harris,890 Walnut St,St. John's,NL,709-555-5678,thomas@example.com,0,No
-1911,ST9012,1931,Karen Miller,123 Elm St,St. John's,NL709-555-9012,karen@example.com,0,Yes
-1912,UV3456,1932,James Wilson,456 Oak St,St. John's,NL,709-555-3456,james@example.com,0,No
-1913,WX7890,1933,Laura Brown,789 Pine St,St. John's,NL,709-555-7890,laura@example.com,125,Yes
-1914,YZ2345,1934,Michaela Clark,987 Birch St,St. John's,NL,709-555-2345,michaela@example.com,0,No
-1915,AB6789,1935,Christopher Davis,654 Maple St,St. John's,NL,709-555-6789,christopher@example.com,0,Yes
-1916,CD1234,1936,Elizabeth Taylor,321 Cedar St,St. John's,NL,709-555-1234,elizabeth@example.com,200,No
-1917,EF5678,1937,Matthew Anderson,567 Willow St,St. John's,NL,709-555-5678,matthew@example.com,0,Yes
-1918,GH9012,1938,Amanda Martinez,890 Walnut St,St. John's,NL,709-555-9012,amanda@example.com,0,No
-1919,IJ3456,1939,Justin Lewis,123 Elm St,St. John's,NL,709-555-3456,justin@example.com,0,Yes
-1920,KL7890,1940,Emily Wright,456 Oak St,St. John's,NL,709-555-7890,emily@example.com,0,No
-1921,MN2345,1941,Andrew Scott,789 Pine St,St. John's,NL,709-555-2345,andrew@example.com,150,Yes
+1923, William, Smith, 232, 45 Elm Street, Cityville, ON, B2C3D4, 555-123-4567, 232345, 07/28, 234567123, Aviva, N, Weekly, 250.0, 37.50, 287.5
+1924, Jessica, Johnson, N/A, 123 Oak Avenue, Villagetown, BC, C4D5E6, 555-987-6543, 233456, 06/27, 345678234, Desjardins, Y, N/A, 100.0, 15.00, 115.0
+1925, Michael, Williams, 234, 987 Pine Road, Hamletsville, SK, F6G7H8, 555-789-0123, 234567, 05/26, 456789345, TD, N, Daily, 75.0, 11.25, 86.25
+1926, Sarah, Lee, 235, N/A Birch Lane, Suburbville, MB, I9J1K2, 555-234-5678, 235678, 04/25, 567890456, RBC, Y, N/A, 0.0, 0.00, 0.0
+1927, Daniel, Martin, 236, 321 Maple Crescent, Cityborough, NS, L3M4N5, 555-345-6789, 236789, 03/24, 678901567, Allstate, N, Weekly, 150.0, 22.50, 172.5
+1928, Emily, Rodriguez, N/A, 234 Cedar Drive, Villetown, AB, O4P5Q6, 555-456-7890, 237890, 02/23, 789012678, Co-operators, Y, N/A, 500.0, 75.00, 575.0
+1929, David, Jackson, 238, 567 Willow Circle, Hometown, QC, R5S6T7, 555-567-8901, 238901, 01/22, 890123789, Wawanesa, N, Daily, 30.0, 4.50, 34.5
+1930, Olivia, Harris, N/A, 890 Walnut Lane, Townington, PEI, U7V8W9, 555-678-9012, 239012, 12/21, 901234890, Sun Life, Y, N/A, 1000.0, 150.00, 1150.0
+1931, Thomas, Miller, 240, 123 Elm Boulevard, Citysville, NB, X0Y1Z2, 555-789-0123, 240123, 11/20, 123456901, Manulife, N, Weekly, 80.0, 12.00, 92.0
+1932, Sophia, Wilson, N/A, 456 Oak Lane, Suburbtown, NWT, A1B2C3, 555-890-1234, 241234, 10/19, 234567012, Economical, Y, N/A, 400.0, 60.00, 460.0
+1933, Ethan, Brown, 242, 789 Pine Road, Hamletville, NT, D4E5F6, 555-901-2345, 242345, 09/18, 345678123, Industrial Alliance, N, Daily, 60.0, 9.00, 69.0
+1934, Isabella, Clark, N/A, 987 Birch Avenue, Villagetown, BC, G7H8I9, 555-012-3456, 243456, 08/17, 456789234, Co-operators, Y, N/A, 20.0, 3.00, 23.0
+1935, Jacob, Davis, 244, 654 Maple Street, Townsville, ON, J1K2L3, 555-123-4567, 244567, 07/16, 567890345, Aviva, N, Weekly, 150.0, 22.50, 172.5
+1936, Mia, Taylor, N/A, 321 Cedar Place, Cityborough, NS, M4N5O6, 555-234-5678, 245678, 06/15, 678901456, RBC, Y, N/A, 0.0, 0.00, 0.0
+1937, Noah, Anderson, 246, 567 Willow Road, Villetown, AB, P7Q8R9, 555-345-6789, 246789, 05/14, 789012567, TD, N, Daily, 75.0, 11.25, 86.25
+1938, Emma, Martinez, N/A, 890 Walnut Drive, Hometown, PEI, S0T1U2, 555-456-7890, 247890, 04/13, 890123678, Desjardins, Y, N/A, 200.0, 30.00, 230.0
+1939, Liam, Lewis, 248, 123 Elm Lane, Townington, NB, V3W4X5, 555-567-8901, 248901, 03/12, 901234789, Intact, N, Weekly, 100.0, 15.00, 115.0
+1940, Ava, Wright, N/A, 456 Oak Road, Citysville, QC, Y6Z1A2, 555-678-9012, 249012, 02/11, 123456890, Aviva, Y, N/A, 0.0, 0.00, 0.0
+1941, Jackson, Scott, 250, 789 Pine Avenue, Suburbtown, NWT, B3C4D5, 555-789-0123, 250123, 01/10, 234567901, Sun Life, N, Daily, 40.0, 6.00, 46.0
+1942, Sophia, Johnson, N/A, 987 Birch Boulevard, Hamletville, NT, E5F6G7, 555-890-1234, 251234, 12/09, 345678012, Wawanesa, Y, N/A, 0.0, 0.00, 0.0

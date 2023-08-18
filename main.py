@@ -145,8 +145,10 @@ def newEmployee():
                 break
 
         while True:
-            empOwnCar = input("Does this employee have their own car? (Y/N)").upper()
+            empOwnCar = input("Does this employee have their own car? (Y/N): ").upper()
             if empOwnCar != "Y" and empOwnCar != "N":
+                print("Invalid response, enter Y or N please. ")
+            elif empOwnCar == "":
                 print("Invalid response, enter Y or N please. ")
             elif empOwnCar == "Y":
                 balDueSubtotal = MONTHLY_STAND_FEE
@@ -204,7 +206,7 @@ def newEmployee():
         print()
 
         print()
-        print(f"=" * 40)
+        print(f"=" * 45)
         print(f" NEW EMPLOYEE ADDED: {empFirstName:<10s} {empLastName:<10s}")
         print()
         print(f" EMPLOYEE DETAILS:")
@@ -221,11 +223,11 @@ def newEmployee():
         print(f" SUBTOTAL: {balDueSubtotalDsp:>9s}")
         print(f" TAXES: {balDueTaxAmtDsp:>9s}")
         print(f" TOTAL: {balDueTotalDsp:>9s}")
-        print(f"=" * 40)
+        print(f"=" * 45)
         print()
 
         print()
-        newEmployeeContinue = input("Do you want to enter a new employee? ").upper()
+        newEmployeeContinue = input("Do you want to enter a new employee?: ").upper()
         if newEmployeeContinue != "Y" and newEmployeeContinue != "N":
             print("Invalid response, enter Y or N please. ")
         elif newEmployeeContinue == "Y":

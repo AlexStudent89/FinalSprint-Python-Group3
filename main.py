@@ -8,22 +8,22 @@ import csv
 import datetime
 
 # Constants
-f = open('defaults.dat', 'r')
-
-NEXT_TRANSACTION_NUM = int(f.readline())
-NEXT_DRIVER_NUM = int(f.readline())
-MONTHLY_STAND_FEE = float(f.readline())
-DAILY_RENTAL_FEE = float(f.readline())
-WEEKLY_RENTAL_FEE = float(f.readline())
-HST_RATE = float(f.readline())
-
-f.close()
 
 # Functions
 def newEmployee():
-    while True:
 
-        empDriverNum = NEXT_DRIVER_NUM
+    f = open('defaults.dat', 'r')
+
+    NEXT_TRANSACTION_NUM = int(f.readline())
+    NEXT_DRIVER_NUM = int(f.readline())
+    MONTHLY_STAND_FEE = float(f.readline())
+    DAILY_RENTAL_FEE = float(f.readline())
+    WEEKLY_RENTAL_FEE = float(f.readline())
+    HST_RATE = float(f.readline())
+
+    f.close()
+
+    while True:
 
         print()
         print("Add new Employee:")
@@ -50,7 +50,7 @@ def newEmployee():
                 break
 
         while True:
-            empAddress = input("Enter employee address: ")
+            empAddress = input("Enter employee address: ").upper()
             if empAddress == "":
                 print("Enter a valid address.")
             else:
@@ -172,8 +172,7 @@ def newEmployee():
         balDueTotal = balDueSubtotal * (1 + HST_RATE)
 
         f = open("drivers.dat", "a")
-        f.write("\n") 
-        f.write(f"{empDriverNum},")
+        f.write(f"{NEXT_DRIVER_NUM},")
         f.write(f"{empFirstName}, ")
         f.write(f"{empLastName}, ")
         f.write(f"{empCarNum},")
@@ -189,10 +188,21 @@ def newEmployee():
         f.write(f"{empOwnCar}, ")
         f.write(f"{typeOfCharges}, ")
         f.write(f"{balDueSubtotal}, ")
-        f.write(f"{balDueTotal}")
+        f.write(f"{balDueTotal}\n")
         f.close()
 
+        NEXT_DRIVER_NUM += 1
+
+        f = open('defaults.dat', 'w')
+        f.write(f"{NEXT_TRANSACTION_NUM}\n")
+        f.write(f"{NEXT_DRIVER_NUM}\n")
+        f.write(f"{MONTHLY_STAND_FEE}\n ")
+        f.write(f"{DAILY_RENTAL_FEE}\n")
+        f.write(f"{WEEKLY_RENTAL_FEE} \n")
+        f.write(f"{HST_RATE} ")
         f.close()
+
+
 
         balDueTaxAmt = balDueTotal - balDueSubtotal
 
@@ -205,27 +215,34 @@ def newEmployee():
         print(f" Employee added successfully.")
         print()
 
+        print("EMPLOYEE DETAILS")
+        print("=" * 70)
+        print(f"NEW EMPLOYEE ADDED: {empFirstName:<15s} {empLastName:<15s}")
+        print(f"DRIVER NUMBER: {NEXT_DRIVER_NUM:<5d}")  
+        print("=" * 70)
+        print("EMPLOYEE ADDRESS:")
+        print(f"{empAddress:<60s}")
+        print(f"{empCity:<30s} {empProv:<10s} {empPostal:<15s}")
+        print(f"PHONE: {empPhone:<25s}")
+        print("=" * 70)
+        print("LICENSE INFORMATION:")
+        print(f"LICENSE NUMBER: {str(licenseNum):>30s} - {licenseTimeline:<20s}")
+        print("=" * 70)
+        print("INSURANCE INFORMATION:")
+        print(f"INSURANCE NUMBER: {str(insuranceNum):>28s} - {insuranceCompany:<25s}")
+        print("=" * 70)
+        print("EMPLOYEE CAR INFORMATION:")
+        print(f"CAR NUMBER: {empCarNum:<40s}")
+        print(f"EMPLOYEE OWNS CAR: {empOwnCar:<15s}")
+        print(f"TYPE OF CHARGES: {typeOfCharges:<20s}")
+        print("=" * 70)
+        print("EMPLOYEE BALANCE:")
         print()
-        print(f"=" * 45)
-        print(f" NEW EMPLOYEE ADDED: {empFirstName:<10s} {empLastName:<10s}")
+        print(f"SUBTOTAL: {balDueSubtotalDsp:>30s}")
+        print(f"TAXES: {balDueTaxAmtDsp:>33s}")
+        print(f"TOTAL: {balDueTotalDsp:>33s}")
+        print("=" * 70)
         print()
-        print(f" EMPLOYEE DETAILS:")
-        print(f" ADDRESS: {empAddress:<15s}, {empCity:<10s}, {empPostal:<7s}")
-        print(f" PHONE: {empPhone:<12s}")
-        print(f"=" * 40)
-        print()
-        print(f" LICENSE NUMBER: {str(licenseNum):>10s} - {licenseTimeline:<5s}")
-        print(f" INSURANCE NUMBER: {str(insuranceNum):>10s} - {insuranceCompany:<10s}")
-        print(f" EMPLOYEE OWNS CAR: {empOwnCar:<1s}")
-        print(f"=" * 40)
-        print(f" EMPLOYEE BALANCE:")
-        print()
-        print(f" SUBTOTAL: {balDueSubtotalDsp:>9s}")
-        print(f" TAXES: {balDueTaxAmtDsp:>9s}")
-        print(f" TOTAL: {balDueTotalDsp:>9s}")
-        print(f"=" * 45)
-        print()
-
         print()
         newEmployeeContinue = input("Do you want to enter a new employee?: ").upper()
         if newEmployeeContinue != "Y" and newEmployeeContinue != "N":
@@ -234,6 +251,7 @@ def newEmployee():
             pass
         else:
             break
+
 
 def companyProfitListing():
     while True:

@@ -173,7 +173,7 @@ def newEmployee():
 
         f = open("Drivers.dat", "a")
 
-        driverFirstName = f.write(f"\n{empFirstName}, ")
+        driverFirstName = f.write(f"{empFirstName}, ")
         driverLastName = f.write(f"{empLastName}, ")
         driverAddress = f.write(f"{empAddress}, ")
         driverCity = f.write(f"{empCity}, ")

@@ -175,7 +175,7 @@ def newEmployee():
         f.write(f"{NEXT_DRIVER_NUM},")
         f.write(f"{empFirstName}, ")
         f.write(f"{empLastName}, ")
-        f.write(f"{empCarNum},")
+        f.write(f"{empCarNum}, ")
         f.write(f"{empAddress}, ")
         f.write(f"{empCity}, ")
         f.write(f"{empProv}, ")
